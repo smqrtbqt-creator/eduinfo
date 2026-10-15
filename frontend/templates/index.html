@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{ site_name }} — Accueil{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <h1>Aide &amp; Services</h1>
+    <p>
+      Un accompagnement humain, proche et bienveillant pour faciliter le quotidien
+      des personnes à domicile — ménage, courses, présence et lien social.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/register">Créer un compte</a>
+      <a class="btn btn-secondary" href="/services">Découvrir nos services</a>
+    </div>
+  </div>
+  <div class="hero-visual" role="img" aria-label="Illustration d'accompagnement à domicile">
+    <div class="hero-caption">
+      <strong>Présents à vos côtés</strong><br>
+      Intervention à domicile, écoute et suivi personnalisé.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Pourquoi nous choisir ?</h2>
+  <p class="lead">Une offre simple, claire et rassurante pour les familles et les bénéficiaires.</p>
+  <div class="grid-3">
+    <article class="feature">
+      <h3>Aide au quotidien</h3>
+      <p>Entretien du logement, préparation de repas simples et courses de proximité.</p>
+    </article>
+    <article class="feature">
+      <h3>Présence bienveillante</h3>
+      <p>Compagnie, promenades et maintien du lien social pour rompre l'isolement.</p>
+    </article>
+    <article class="feature">
+      <h3>Écoute des familles</h3>
+      <p>Un interlocuteur dédié pour coordonner les interventions et rassurer vos proches.</p>
+    </article>
+  </div>
+</section>
+{% endblock %}

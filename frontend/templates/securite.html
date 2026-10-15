@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Sécurité — HTTP, HTTPS, TLS{% endblock %}
+{% block content %}
+<div class="page-title">
+  <h1>Comprendre la sécurité des connexions</h1>
+  <p>Page pédagogique pour expliquer ce que Firefox signale lorsque le certificat n'est pas reconnu.</p>
+</div>
+
+<section class="section">
+  <h2>Schéma du contrôle effectué par le navigateur</h2>
+  <div class="flow" aria-label="Schéma TLS">
+    <div class="flow-step">Navigateur</div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step">Connexion TLS</div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step">Certificat du serveur</div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step">Vérification par le navigateur</div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step">Connexion sécurisée ou avertissement</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Notions essentielles</h2>
+  <div class="glossary">
+    <article>
+      <h3>HTTP</h3>
+      <p>Protocole de communication du Web. En HTTP simple, les données circulent sans chiffrement : un observateur du réseau pourrait lire les échanges.</p>
+    </article>
+    <article>
+      <h3>HTTPS</h3>
+      <p>HTTP utilisé au-dessus de TLS. L'objectif est de chiffrer la communication et d'aider à vérifier l'identité du serveur via un certificat.</p>
+    </article>
+    <article>
+      <h3>TLS</h3>
+      <p>Protocole cryptographique qui établit une connexion chiffrée entre le navigateur et le serveur (successeur de SSL).</p>
+    </article>
+    <article>
+      <h3>Certificat numérique</h3>
+      <p>Document électronique présenté par le serveur. Il contient notamment le nom du site (ou localhost), une clé publique et des informations sur l'émetteur.</p>
+    </article>
+    <article>
+      <h3>Autorité de certification (CA)</h3>
+      <p>Organisme de confiance qui signe des certificats. Les navigateurs connaissent une liste d'autorités reconnues. Un certificat signé par une CA inconnue déclenche un avertissement.</p>
+    </article>
+    <article>
+      <h3>Certificat expiré</h3>
+      <p>Un certificat n'est valable que pendant une période donnée. S'il est expiré, le navigateur refuse de faire confiance à la connexion.</p>
+    </article>
+    <article>
+      <h3>Certificat auto-signé</h3>
+      <p>Certificat créé et signé par le serveur lui-même, sans autorité de certification publique. C'est le cas de ce site de TP : Firefox affiche un avertissement volontaire.</p>
+    </article>
+    <article>
+      <h3>Certificat correspondant à un autre domaine</h3>
+      <p>Si vous visitez <em>exemple.fr</em> mais que le certificat est délivré pour <em>autre-site.fr</em>, le navigateur signale une incohérence de nom (erreur de correspondance).</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="panel">
+    <h2>Sur ce site de démonstration</h2>
+    <p>
+      Le serveur utilise un <strong>certificat auto-signé de développement</strong>.
+      Il n'est pas reconnu par Firefox. C'est voulu : l'élève doit pouvoir constater
+      l'avertissement, examiner le certificat, puis décider de poursuivre uniquement
+      dans le cadre du TP.
+    </p>
+    <p>
+      <strong>Ne jamais</strong> accepter un tel avertissement sur un véritable site
+      demandant des données personnelles, sauf instruction claire d'un contexte pédagogique contrôlé.
+    </p>
+  </div>
+</section>
+{% endblock %}

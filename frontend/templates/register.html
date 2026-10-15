@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Créer un compte — {{ site_name }}{% endblock %}
+{% block content %}
+<div class="page-title">
+  <h1>Créer un compte</h1>
+  <p>Formulaire de démonstration. N'utilisez aucune information personnelle réelle.</p>
+</div>
+
+<section class="section">
+  <div class="panel">
+    <div class="warning-box" role="alert">
+      <strong>⚠️ Attention</strong>
+      Vous êtes sur un site de démonstration pédagogique.<br>
+      Les informations saisies dans ce formulaire sont des données personnelles.<br>
+      N'utilisez pas vos véritables informations personnelles ni un véritable mot de passe.
+    </div>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="post" action="/register" autocomplete="off">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="first_name">Prénom</label>
+          <input id="first_name" name="first_name" type="text" required maxlength="100"
+                 value="{{ form_data.get('first_name', '') }}">
+        </div>
+        <div class="form-group">
+          <label for="last_name">Nom</label>
+          <input id="last_name" name="last_name" type="text" required maxlength="100"
+                 value="{{ form_data.get('last_name', '') }}">
+        </div>
+        <div class="form-group">
+          <label for="email">Adresse e-mail</label>
+          <input id="email" name="email" type="email" required maxlength="255"
+                 placeholder="prenom.nom@example.test"
+                 value="{{ form_data.get('email', '') }}">
+        </div>
+        <div class="form-group">
+          <label for="phone">Numéro de téléphone</label>
+          <input id="phone" name="phone" type="tel" required maxlength="50"
+                 value="{{ form_data.get('phone', '') }}">
+        </div>
+        <div class="form-group full">
+          <label for="address">Adresse</label>
+          <input id="address" name="address" type="text" required maxlength="255"
+                 value="{{ form_data.get('address', '') }}">
+        </div>
+        <div class="form-group">
+          <label for="postal_code">Code postal</label>
+          <input id="postal_code" name="postal_code" type="text" required maxlength="20"
+                 value="{{ form_data.get('postal_code', '') }}">
+        </div>
+        <div class="form-group">
+          <label for="city">Ville</label>
+          <input id="city" name="city" type="text" required maxlength="100"
+                 value="{{ form_data.get('city', '') }}">
+        </div>
+        <div class="form-group">
+          <label for="password">Mot de passe (fictif)</label>
+          <input id="password" name="password" type="password" required maxlength="128"
+                 autocomplete="new-password">
+        </div>
+        <div class="form-group">
+          <label for="password_confirm">Confirmation du mot de passe</label>
+          <input id="password_confirm" name="password_confirm" type="password" required maxlength="128"
+                 autocomplete="new-password">
+        </div>
+      </div>
+
+      <div class="checkbox-row">
+        <input id="demo_ack" name="demo_ack" type="checkbox" value="1" required>
+        <label for="demo_ack">J'ai compris que je suis sur un site de démonstration.</label>
+      </div>
+
+      <button class="btn btn-primary" type="submit">Créer mon compte</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}À propos — {{ site_name }}{% endblock %}
+{% block content %}
+<div class="page-title">
+  <h1>À propos</h1>
+  <p>Aide &amp; Services est un organisme <strong>fictif</strong> créé pour un exercice pédagogique de cybersécurité.</p>
+</div>
+
+<section class="section">
+  <div class="panel">
+    <h2>Notre mission (fiction pédagogique)</h2>
+    <p>
+      Dans le cadre de ce TP, ce site imite l'apparence d'un véritable organisme d'aide à la personne.
+      L'objectif n'est pas de proposer un vrai service, mais de faire observer :
+    </p>
+    <ul>
+      <li>l'avertissement du navigateur face à un certificat TLS non reconnu ;</li>
+      <li>la collecte de données personnelles via un formulaire ;</li>
+      <li>ce qu'un site peut recevoir et afficher après transmission ;</li>
+      <li>la différence entre un site légitime et un site potentiellement malveillant.</li>
+    </ul>
+    <p>
+      <a href="/securite">Lire la page pédagogique sur HTTP, HTTPS et les certificats →</a>
+    </p>
+  </div>
+</section>
+{% endblock %}

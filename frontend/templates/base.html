@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ site_name }}{% endblock %}</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Site de démonstration pédagogique — Aide & Services. N'utilisez pas de données personnelles réelles.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,550;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="demo-banner" role="alert">
+    ⚠️ SITE DE DÉMONSTRATION — N'UTILISEZ PAS DE DONNÉES PERSONNELLES RÉELLES.
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="/">
+      <div class="brand-mark" aria-hidden="true">A&amp;S</div>
+      <div class="brand-text">
+        <strong>{{ site_name }}</strong>
+        <span>Accompagnement à domicile</span>
+      </div>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="/" class="{% if request.url.path == '/' %}active{% endif %}">Accueil</a>
+      <a href="/services" class="{% if request.url.path == '/services' %}active{% endif %}">Nos services</a>
+      <a href="/a-propos" class="{% if request.url.path == '/a-propos' %}active{% endif %}">À propos</a>
+      <a href="/contact" class="{% if request.url.path == '/contact' %}active{% endif %}">Contact</a>
+      <a href="/securite" class="{% if request.url.path == '/securite' %}active{% endif %}">Sécurité</a>
+      {% if logged_in %}
+        <a href="/connecte">Mon espace</a>
+        <form class="inline-form" method="post" action="/logout">
+          <button class="btn btn-secondary btn-small" type="submit">Déconnexion</button>
+        </form>
+      {% else %}
+        <a class="btn btn-secondary btn-small" href="/login">Se connecter</a>
+        <a class="btn btn-primary btn-small" href="/register">Créer un compte</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      <strong>{{ site_name }}</strong> — organisme fictif créé pour un exercice de cybersécurité.
+      Aucun véritable mot de passe n'est conservé. Toutes les données restent locales.
+    </p>
+    <p>
+      <a href="/securite">Comprendre HTTP, HTTPS et les certificats</a>
+      ·
+      <a href="/admin">Espace enseignant</a>
+    </p>
+  </footer>
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

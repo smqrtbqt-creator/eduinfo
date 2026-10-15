@@ -1,0 +1,20 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: aide-services-demo
+    ports:
+      - "8443:8443"
+    environment:
+      ADMIN_USERNAME: enseignant
+      ADMIN_PASSWORD: PedagoDemo2026!
+      SESSION_SECRET: change-me-in-class-but-local-only
+      FRONTEND_DIR: /frontend
+      DATA_DIR: /database
+      CERTS_DIR: /certs
+    volumes:
+      - ./database:/database
+      - ./certs:/certs
+      - ./frontend:/frontend
+    restart: unless-stopped

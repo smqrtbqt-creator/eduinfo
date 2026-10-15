@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Attention — données transmises{% endblock %}
+{% block content %}
+<div class="page-title">
+  <h1>Résultat de l'inscription</h1>
+</div>
+
+<section class="section">
+  <div class="danger-panel">
+    <h1>🔴 ATTENTION — Vous venez de partager des données personnelles</h1>
+    <p>
+      Voici exactement les informations que le site vient de recevoir
+      via le formulaire :
+    </p>
+
+    <div class="data-list">
+      <dl>
+        <dt>Nom</dt><dd>{{ user.last_name }}</dd>
+        <dt>Prénom</dt><dd>{{ user.first_name }}</dd>
+        <dt>E-mail</dt><dd>{{ user.email }}</dd>
+        <dt>Téléphone</dt><dd>{{ user.phone }}</dd>
+        <dt>Adresse</dt><dd>{{ user.address }}</dd>
+        <dt>Code postal</dt><dd>{{ user.postal_code }}</dd>
+        <dt>Ville</dt><dd>{{ user.city }}</dd>
+      </dl>
+    </div>
+
+    <p>
+      Ces informations peuvent permettre d'identifier ou de contacter une personne.
+    </p>
+    <p>
+      Sur un véritable site Internet, vous devez vérifier à qui vous transmettez
+      ces informations et pourquoi elles sont demandées.
+    </p>
+    <p>
+      <em>Note pédagogique :</em> le mot de passe saisi n'a <strong>pas</strong> été conservé
+      (ni en clair, ni sous forme de hash).
+    </p>
+
+    <div class="hero-actions" style="margin-top: 1.25rem;">
+      <a class="btn btn-primary" href="/admin">Voir ce que le site a reçu</a>
+      <a class="btn btn-secondary" href="/securite">Comprendre les risques</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

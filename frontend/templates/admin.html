@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Administration — {{ site_name }}{% endblock %}
+{% block content %}
+<div class="page-title">
+  <h1>Interface pédagogique d'administration</h1>
+  <p>Réservée à l'enseignant. Affiche les comptes fictifs créés pendant l'exercice. Aucun mot de passe n'est jamais affiché.</p>
+</div>
+
+<section class="section">
+  <div class="panel wide">
+    {% if message %}
+      <div class="success">{{ message }}</div>
+    {% endif %}
+
+    <div class="stats">
+      <div class="stat">
+        <strong>{{ count }}</strong>
+        compte(s) créé(s)
+      </div>
+      <div class="stat">
+        <strong>{{ now_label }}</strong>
+        heure locale actuelle
+      </div>
+    </div>
+
+    <div class="admin-toolbar">
+      <form method="post" action="/admin/seed">
+        <button class="btn btn-secondary" type="submit">Générer des utilisateurs fictifs</button>
+      </form>
+      <form method="post" action="/admin/reset" data-confirm="Supprimer TOUTES les données de démonstration ?">
+        <button class="btn btn-danger" type="submit">Supprimer toutes les données</button>
+      </form>
+      <form method="post" action="/admin/logout">
+        <button class="btn btn-secondary" type="submit">Déconnexion enseignant</button>
+      </form>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>E-mail</th>
+            <th>Téléphone</th>
+            <th>Adresse</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if users %}
+            {% for user in users %}
+              <tr>
+                <td>{{ user.created_at.strftime('%d/%m/%Y %H:%M:%S') }}</td>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.address }}, {{ user.postal_code }} {{ user.city }}</td>
+                <td>
+                  <form method="post" action="/admin/delete/{{ user.id }}" data-confirm="Supprimer ce compte fictif ?">
+                    <button class="btn btn-danger btn-small" type="submit">Supprimer</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td colspan="7">Aucun compte pour le moment. Créez-en via /register ou générez des utilisateurs fictifs.</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}

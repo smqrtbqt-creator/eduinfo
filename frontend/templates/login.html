@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Se connecter — {{ site_name }}{% endblock %}
+{% block content %}
+<div class="page-title">
+  <h1>Se connecter</h1>
+  <p>Simulation visuelle d'une connexion. Aucun mot de passe n'est conservé par le site.</p>
+</div>
+
+<section class="section">
+  <div class="panel">
+    <div class="warning-box" role="alert">
+      <strong>⚠️ Démonstration pédagogique</strong>
+      Utilisez uniquement un compte fictif créé pendant l'exercice
+      (par exemple un e-mail en @example.test).
+    </div>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="post" action="/login" autocomplete="off">
+      <div class="form-grid">
+        <div class="form-group full">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" required maxlength="255"
+                 placeholder="jean.exemple@example.test">
+        </div>
+        <div class="form-group full">
+          <label for="password">Mot de passe</label>
+          <input id="password" name="password" type="password" required maxlength="128"
+                 autocomplete="current-password">
+        </div>
+      </div>
+      <p style="color: var(--muted); font-size: 0.92rem;">
+        Pour cette démonstration, la connexion réussit si l'e-mail existe dans la base locale.
+        Le mot de passe saisi n'est jamais enregistré.
+      </p>
+      <button class="btn btn-primary" type="submit">Se connecter</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Vous êtes connecté — {{ site_name }}{% endblock %}
+{% block content %}
+<div class="page-title">
+  <h1>Vous êtes connecté.</h1>
+  <p>Bienvenue{% if user_name %} {{ user_name }}{% endif %}.</p>
+</div>
+
+<section class="section">
+  <div class="panel">
+    <div class="success">Session de démonstration active.</div>
+    <p>
+      Dans cet exercice, ce compte est fictif et aucun véritable mot de passe n'est conservé.
+    </p>
+    <p>
+      Une session temporaire permet uniquement de simuler l'état « connecté »
+      pour le TP. Aucune authentification réelle n'est mise en œuvre.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-secondary" href="/">Retour à l'accueil</a>
+      <form class="inline-form" method="post" action="/logout">
+        <button class="btn btn-primary" type="submit">Se déconnecter</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
