@@ -100,6 +100,12 @@ def securite(request: Request):
     return templates.TemplateResponse("securite.html", template_context(request))
 
 
+@app.get("/jeu", response_class=HTMLResponse)
+def jeu_secours(request: Request):
+    """Simulation pédagogique TIM / PSC1 — scène de secours interactive."""
+    return templates.TemplateResponse("jeu.html", template_context(request))
+
+
 # ---------------------------------------------------------------------------
 # Inscription
 # ---------------------------------------------------------------------------

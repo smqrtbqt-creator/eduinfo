@@ -6,3 +6,5 @@ itsdangerous==2.2.0
 sqlalchemy==2.0.36
 aiosqlite==0.20.0
 cryptography==44.0.0
+pytest==8.3.4
+httpx==0.28.1

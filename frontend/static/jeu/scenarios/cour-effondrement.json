@@ -1,0 +1,625 @@
+{
+  "id": "cour-effondrement",
+  "title": "Un élève s'effondre dans la cour",
+  "version": 1,
+  "disclaimer": "Support pédagogique TIM / PSC1 — ne remplace pas une formation pratique. En situation réelle : protégez, examinez rapidement la victime, puis alertez immédiatement les secours (15, 18 ou 112) et suivez leurs instructions. On ne consulte pas Internet ni les réseaux sociaux avant d'appeler. La vérification de sources dans ce jeu est un exercice TIM séparé, pas une étape de la procédure d'urgence.",
+  "realProcedureNote": "En temps normal, la procédure d'appel des secours ne passe PAS par la consultation d'informations en ligne. L'alerte repose sur ce que vous observez et ce que les témoins rapportent sur place. Les sources TIM de ce jeu servent uniquement à entraîner l'esprit critique face aux rumeurs.",
+  "emergencyNumbers": [
+    { "number": "15", "label": "SAMU" },
+    { "number": "18", "label": "Sapeurs-pompiers" },
+    { "number": "112", "label": "Numéro d'urgence européen" }
+  ],
+  "officialRefs": [
+    {
+      "title": "Numéros d'urgence — service-public.gouv.fr",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33954"
+    },
+    {
+      "title": "Numéros utiles nationaux — Ma Sécurité (Ministère de l'Intérieur)",
+      "url": "https://www.masecurite.interieur.gouv.fr/fr/fiches-pratiques/famille-et-aides-aux-victimes/numeros-utiles-nationaux"
+    }
+  ],
+  "steps": [
+    {
+      "id": "A",
+      "name": "Observer et protéger",
+      "objectives": [
+        "Examiner la cour et identifier les dangers",
+        "Sécuriser la zone sans s'exposer"
+      ],
+      "completeWhen": {
+        "allFlags": ["danger_trottinette_identifie", "sol_glissant_identifie", "zone_securisee"]
+      }
+    },
+    {
+      "id": "B",
+      "name": "Recueillir des informations",
+      "objectives": [
+        "Interroger les témoins sur place (faits utiles à l'alerte)",
+        "Distinguer faits, témoignages et rumeurs",
+        "Exercice TIM : analyser une source (pas une étape réelle avant l'appel)"
+      ],
+      "completeWhen": {
+        "allFlags": ["temoin_lea_interroge", "temoin_marcus_interroge", "source_evaluee"]
+      }
+    },
+    {
+      "id": "C",
+      "name": "Évaluer la situation",
+      "objectives": [
+        "Approcher sans danger",
+        "Constater l'état de la victime (conscience / respiration — simulation)"
+      ],
+      "completeWhen": {
+        "allFlags": ["approche_securisee", "conscience_evaluee", "respiration_evaluee"]
+      }
+    },
+    {
+      "id": "D",
+      "name": "Alerter",
+      "objectives": [
+        "Choisir un numéro d'urgence adapté",
+        "Transmettre un message clair : lieu, situation, état, risques"
+      ],
+      "completeWhen": {
+        "allFlags": ["alerte_envoyee"]
+      }
+    },
+    {
+      "id": "E",
+      "name": "Bilan",
+      "objectives": [
+        "Revoir les décisions et les informations vérifiées"
+      ],
+      "completeWhen": {
+        "allFlags": ["bilan_vu"]
+      }
+    }
+  ],
+  "initialFlags": {},
+  "entities": [
+    {
+      "id": "victim",
+      "type": "person",
+      "label": "Élève au sol",
+      "description": "Un élève est allongé dans la cour. Son état n'est pas encore évalué. N'inventez pas de diagnostic médical.",
+      "svg": { "x": 380, "y": 320, "w": 90, "h": 70 },
+      "actionsByStep": {
+        "A": ["observer_victime"],
+        "B": ["observer_victime"],
+        "C": ["approcher_securite", "evaluer_conscience", "evaluer_respiration", "donner_a_boire"],
+        "D": ["observer_victime"],
+        "E": []
+      }
+    },
+    {
+      "id": "witness_lea",
+      "type": "person",
+      "label": "Léa (témoin)",
+      "description": "Élève de terminale, près du banc. Elle semble choquée.",
+      "svg": { "x": 160, "y": 250, "w": 70, "h": 90 },
+      "actionsByStep": {
+        "A": ["parler_lea_premature"],
+        "B": ["interroger_lea"],
+        "C": ["interroger_lea"],
+        "D": ["demander_telephone_lea"],
+        "E": []
+      }
+    },
+    {
+      "id": "witness_marcus",
+      "type": "person",
+      "label": "Marcus (témoin)",
+      "description": "Élève qui filme la scène avec son téléphone.",
+      "svg": { "x": 520, "y": 200, "w": 70, "h": 90 },
+      "actionsByStep": {
+        "A": ["parler_marcus_premature"],
+        "B": ["interroger_marcus"],
+        "C": ["interroger_marcus"],
+        "D": ["utiliser_telephone_marcus"],
+        "E": []
+      }
+    },
+    {
+      "id": "witness_nora",
+      "type": "person",
+      "label": "Nora (témoin)",
+      "description": "Élève près de l'entrée. Elle dit avoir vu un message sur un réseau social.",
+      "svg": { "x": 620, "y": 120, "w": 70, "h": 90 },
+      "actionsByStep": {
+        "A": [],
+        "B": ["interroger_nora", "voir_sources"],
+        "C": ["voir_sources"],
+        "D": [],
+        "E": []
+      }
+    },
+    {
+      "id": "danger_trottinette",
+      "type": "danger",
+      "label": "Trottinette abandonnée",
+      "description": "Une trottinette est au milieu du passage : risque de chute pour les secours et les élèves.",
+      "svg": { "x": 300, "y": 240, "w": 80, "h": 50 },
+      "actionsByStep": {
+        "A": ["identifier_trottinette", "deplacer_trottinette"],
+        "B": ["identifier_trottinette"],
+        "C": [],
+        "D": [],
+        "E": []
+      }
+    },
+    {
+      "id": "danger_sol",
+      "type": "danger",
+      "label": "Zone de sol humide",
+      "description": "Une flaque rend le sol glissant près de la victime.",
+      "svg": { "x": 350, "y": 380, "w": 120, "h": 50 },
+      "actionsByStep": {
+        "A": ["identifier_sol", "baliser_zone"],
+        "B": [],
+        "C": [],
+        "D": [],
+        "E": []
+      }
+    },
+    {
+      "id": "backpack",
+      "type": "object",
+      "label": "Sac à dos",
+      "description": "Sac à dos près de la victime. Peut servir à baliser ou à protéger, pas à improviser un soin.",
+      "svg": { "x": 450, "y": 360, "w": 55, "h": 50 },
+      "actionsByStep": {
+        "A": ["examiner_sac", "utiliser_sac_balisage"],
+        "B": ["examiner_sac"],
+        "C": [],
+        "D": [],
+        "E": []
+      }
+    },
+    {
+      "id": "bench",
+      "type": "object",
+      "label": "Banc",
+      "description": "Banc de cour. Utile pour faire patienter les témoins à l'écart, pas pour y asseoir une victime inconsciente.",
+      "svg": { "x": 100, "y": 300, "w": 110, "h": 45 },
+      "actionsByStep": {
+        "A": ["examiner_banc"],
+        "B": ["ecarter_temoins_banc"],
+        "C": [],
+        "D": [],
+        "E": []
+      }
+    },
+    {
+      "id": "building",
+      "type": "zone",
+      "label": "Entrée du bâtiment",
+      "description": "Entrée du lycée. Lieu à préciser lors de l'alerte (cour côté bâtiment A).",
+      "svg": { "x": 560, "y": 40, "w": 160, "h": 80 },
+      "actionsByStep": {
+        "A": ["examiner_entree"],
+        "B": ["examiner_entree"],
+        "C": [],
+        "D": ["noter_lieu_alerte"],
+        "E": []
+      }
+    },
+    {
+      "id": "circulation",
+      "type": "zone",
+      "label": "Zone de circulation",
+      "description": "Allée fréquentée entre le préau et l'entrée. À sécuriser pour éviter l'afflux de curieux.",
+      "svg": { "x": 40, "y": 160, "w": 200, "h": 70 },
+      "actionsByStep": {
+        "A": ["examiner_circulation", "baliser_zone"],
+        "B": [],
+        "C": [],
+        "D": [],
+        "E": []
+      }
+    },
+    {
+      "id": "phone",
+      "type": "object",
+      "label": "Téléphone de Marcus",
+      "description": "Téléphone disponible pour alerter les secours. En simulation uniquement.",
+      "svg": { "x": 545, "y": 185, "w": 40, "h": 50 },
+      "actionsByStep": {
+        "A": [],
+        "B": ["voir_sources"],
+        "C": [],
+        "D": ["ouvrir_alerte"],
+        "E": []
+      }
+    }
+  ],
+  "actions": [
+    {
+      "id": "observer_victime",
+      "label": "Observer la victime à distance",
+      "feedback": {
+        "ok": "Vous constatez qu'une personne est au sol. Vous ne connaissez pas encore la cause. Protégez d'abord la zone."
+      },
+      "effects": { "addClue": "Une personne est au sol dans la cour.", "setFlags": { "victime_observee": true } },
+      "score": { "pertinence": 1 }
+    },
+    {
+      "id": "parler_lea_premature",
+      "label": "Interroger Léa tout de suite",
+      "feedback": {
+        "warn": "Les témoins sont utiles, mais sécurisez d'abord la zone : un danger non traité peut vous blesser ou aggraver la situation."
+      },
+      "effects": { "setFlags": { "temoins_trop_tot": true } },
+      "score": { "securite": -1 }
+    },
+    {
+      "id": "parler_marcus_premature",
+      "label": "Interroger Marcus tout de suite",
+      "feedback": {
+        "warn": "Marcus filme encore. Avant de discuter, identifiez les risques autour de la victime."
+      },
+      "effects": {},
+      "score": { "securite": -1 }
+    },
+    {
+      "id": "identifier_trottinette",
+      "label": "Identifier le danger (trottinette)",
+      "feedback": {
+        "ok": "Danger identifié : obstacle sur le passage des secours et des élèves."
+      },
+      "effects": {
+        "setFlags": { "danger_trottinette_identifie": true },
+        "addClue": "Trottinette au milieu du passage."
+      },
+      "score": { "securite": 2 }
+    },
+    {
+      "id": "deplacer_trottinette",
+      "label": "Écarter la trottinette sans se mettre en danger",
+      "requiresFlags": ["danger_trottinette_identifie"],
+      "feedback": {
+        "ok": "Vous écartez l'obstacle. La voie est plus sûre pour intervenir et pour les secours."
+      },
+      "effects": { "setFlags": { "trottinette_ecarte": true } },
+      "score": { "securite": 2, "pertinence": 1 }
+    },
+    {
+      "id": "identifier_sol",
+      "label": "Identifier le sol glissant",
+      "feedback": {
+        "ok": "Le sol est humide : risque de chute pour vous et pour les témoins."
+      },
+      "effects": {
+        "setFlags": { "sol_glissant_identifie": true },
+        "addClue": "Sol glissant près de la victime."
+      },
+      "score": { "securite": 2 }
+    },
+    {
+      "id": "examiner_sac",
+      "label": "Examiner le sac à dos",
+      "feedback": {
+        "ok": "Sac ordinaire. Utile pour baliser ou protéger du regard, pas pour inventer un soin."
+      },
+      "effects": { "setFlags": { "sac_examine": true } },
+      "score": { "pertinence": 1 }
+    },
+    {
+      "id": "utiliser_sac_balisage",
+      "label": "Utiliser le sac pour baliser",
+      "requiresFlags": ["sac_examine"],
+      "feedback": {
+        "ok": "Le sac aide à matérialiser un périmètre. Ce n'est pas un geste médical."
+      },
+      "effects": { "setFlags": { "balisage_sac": true } },
+      "score": { "securite": 1 }
+    },
+    {
+      "id": "examiner_banc",
+      "label": "Examiner le banc",
+      "feedback": {
+        "ok": "Le banc peut servir à écarter les curieux. Ne jamais y asseoir une personne inconsciente."
+      },
+      "effects": {},
+      "score": { "pertinence": 1 }
+    },
+    {
+      "id": "examiner_entree",
+      "label": "Examiner l'entrée du bâtiment",
+      "feedback": {
+        "ok": "Repère utile pour l'alerte : cour côté bâtiment A, près de l'entrée principale."
+      },
+      "effects": {
+        "setFlags": { "lieu_connu": true },
+        "addClue": "Lieu : cour côté bâtiment A."
+      },
+      "score": { "alerte": 1 }
+    },
+    {
+      "id": "examiner_circulation",
+      "label": "Examiner la zone de circulation",
+      "feedback": {
+        "ok": "Allée fréquentée : il faudra limiter l'afflux de personnes."
+      },
+      "effects": { "setFlags": { "circulation_vue": true } },
+      "score": { "securite": 1 }
+    },
+    {
+      "id": "baliser_zone",
+      "label": "Sécuriser / baliser la zone",
+      "requiresFlagsAny": ["danger_trottinette_identifie", "sol_glissant_identifie", "circulation_vue"],
+      "feedback": {
+        "ok": "Vous demandez aux témoins de faire un périmètre et d'éviter la zone glissante. La zone est mieux sécurisée."
+      },
+      "effects": { "setFlags": { "zone_securisee": true } },
+      "score": { "securite": 3, "pertinence": 2 }
+    },
+    {
+      "id": "interroger_lea",
+      "label": "Recueillir le témoignage de Léa",
+      "feedback": {
+        "ok": "Léa : « Il a dit qu'il avait chaud, puis il s'est assis et il est tombé. Je n'ai pas vu de choc violent. » — Fait observé + élément rapporté."
+      },
+      "effects": {
+        "setFlags": { "temoin_lea_interroge": true },
+        "addClue": "Léa : malaise possible, pas de choc violent observé.",
+        "addFact": { "type": "temoignage", "text": "Léa rapporte un malaise avant la chute, sans choc violent vu." }
+      },
+      "score": { "info": 2 }
+    },
+    {
+      "id": "interroger_marcus",
+      "label": "Recueillir le témoignage de Marcus",
+      "feedback": {
+        "warn": "Marcus : « C'est sûr qu'on lui a mis quelque chose dans sa boisson, j'ai vu ça sur un story. » — Affirmation non vérifiée, pas un fait observé."
+      },
+      "effects": {
+        "setFlags": { "temoin_marcus_interroge": true },
+        "addClue": "Marcus diffuse une rumeur (story) non vérifiée.",
+        "addFact": { "type": "supposition", "text": "Marcus affirme un empoisonnement d'après un réseau social." }
+      },
+      "score": { "info": 1, "fiabilite": -1 }
+    },
+    {
+      "id": "interroger_nora",
+      "label": "Recueillir le témoignage de Nora",
+      "feedback": {
+        "ok": "Nora : « Je n'ai rien vu. Par contre j'ai un lien partagé dans le groupe de classe. » Elle vous montre des sources à examiner."
+      },
+      "effects": {
+        "setFlags": { "temoin_nora_interroge": true, "sources_disponibles": true },
+        "addClue": "Nora propose des sources en ligne à vérifier."
+      },
+      "score": { "info": 2 }
+    },
+    {
+      "id": "ecarter_temoins_banc",
+      "label": "Écarter les curieux vers le banc",
+      "feedback": {
+        "ok": "Les témoins non utiles s'écartent. La victime est mieux protégée du regard et du bruit."
+      },
+      "effects": { "setFlags": { "temoins_ecartes": true } },
+      "score": { "securite": 1, "pertinence": 1 }
+    },
+    {
+      "id": "voir_sources",
+      "label": "Ouvrir les sources (exercice TIM)",
+      "feedback": {
+        "ok": "Exercice TIM uniquement : examinez auteur, date, objectif et preuves. En situation réelle, vous n'ouvrez pas Internet avant d'appeler les secours — vous alertez avec les faits constatés sur place."
+      },
+      "effects": { "setFlags": { "sources_ouvertes": true, "sources_disponibles": true } },
+      "score": { "fiabilite": 1 }
+    },
+    {
+      "id": "approcher_securite",
+      "label": "S'approcher en sécurité",
+      "requiresFlags": ["zone_securisee"],
+      "feedback": {
+        "ok": "Approche prudente : vous vous présentez, vous évitez le sol glissant, vous restez en sécurité."
+      },
+      "effects": { "setFlags": { "approche_securisee": true } },
+      "score": { "securite": 2, "pertinence": 2 }
+    },
+    {
+      "id": "evaluer_conscience",
+      "label": "Évaluer la conscience (simulation)",
+      "requiresFlags": ["approche_securisee"],
+      "feedback": {
+        "ok": "Simulation : la victime répond faiblement quand on lui parle. Elle est consciente. (Geste à apprendre en formation pratique.)"
+      },
+      "effects": {
+        "setFlags": { "conscience_evaluee": true, "victime_consciente": true },
+        "addClue": "Victime consciente (réponse faible).",
+        "addFact": { "type": "observation", "text": "La victime répond à la voix." }
+      },
+      "score": { "pertinence": 3 }
+    },
+    {
+      "id": "evaluer_respiration",
+      "label": "Évaluer la respiration (simulation)",
+      "requiresFlags": ["approche_securisee"],
+      "feedback": {
+        "ok": "Simulation : la respiration est présente. Surveillez jusqu'à l'arrivée des secours. (Technique précise = formation pratique.)"
+      },
+      "effects": {
+        "setFlags": { "respiration_evaluee": true, "respiration_presente": true },
+        "addClue": "Respiration présente (simulation).",
+        "addFact": { "type": "observation", "text": "Respiration présente selon l'évaluation simulée." }
+      },
+      "score": { "pertinence": 3 }
+    },
+    {
+      "id": "donner_a_boire",
+      "label": "Proposer à boire",
+      "feedback": {
+        "bad": "Incorrect : ne donnez pas à boire à une personne dont l'état n'est pas clairement évalué, et jamais à une personne inconsciente (risque de fausse route)."
+      },
+      "effects": { "setFlags": { "erreur_boire": true } },
+      "score": { "pertinence": -3, "securite": -2 }
+    },
+    {
+      "id": "demander_telephone_lea",
+      "label": "Demander le téléphone de Léa",
+      "feedback": {
+        "ok": "Léa vous prête son téléphone pour alerter."
+      },
+      "effects": { "setFlags": { "telephone_dispo": true } },
+      "score": { "alerte": 1 }
+    },
+    {
+      "id": "utiliser_telephone_marcus",
+      "label": "Utiliser le téléphone de Marcus",
+      "feedback": {
+        "ok": "Marcus arrête de filmer et vous laisse appeler les secours."
+      },
+      "effects": { "setFlags": { "telephone_dispo": true } },
+      "score": { "alerte": 1 }
+    },
+    {
+      "id": "noter_lieu_alerte",
+      "label": "Confirmer le lieu pour l'alerte",
+      "feedback": {
+        "ok": "Lieu noté : cour du lycée, côté bâtiment A, près de l'entrée principale."
+      },
+      "effects": { "setFlags": { "lieu_connu": true } },
+      "score": { "alerte": 2 }
+    },
+    {
+      "id": "ouvrir_alerte",
+      "label": "Composer un numéro d'urgence",
+      "feedback": {
+        "ok": "En situation réelle, cet appel se fait dès que possible après protection et constat rapide — sans consulter le web. Message clair : qui vous êtes, où vous êtes, ce qui s'est passé, l'état constaté, les risques. Suivez ensuite les consignes du régulateur."
+      },
+      "effects": { "setFlags": { "telephone_dispo": true, "ui_alerte": true } },
+      "score": { "alerte": 1 },
+      "opensAlertForm": true
+    }
+  ],
+  "alertForm": {
+    "title": "Message d'alerte aux secours",
+    "intro": "Rappel : en temps normal, on n'appelle pas les secours après une recherche d'infos en ligne. On transmet ce qui a été observé et entendu sur place, puis on suit les instructions.",
+    "fields": [
+      {
+        "id": "number",
+        "label": "Numéro composé",
+        "type": "select",
+        "options": [
+          { "value": "15", "label": "15 — SAMU" },
+          { "value": "18", "label": "18 — Pompiers" },
+          { "value": "112", "label": "112 — Urgence européenne" },
+          { "value": "114", "label": "114 — (autre, contexte spécifique)" },
+          { "value": "999", "label": "999 — (incorrect en France)" }
+        ]
+      },
+      {
+        "id": "location",
+        "label": "Lieu",
+        "type": "select",
+        "options": [
+          { "value": "precise", "label": "Cour du lycée, côté bâtiment A, près de l'entrée" },
+          { "value": "vague", "label": "Au lycée" },
+          { "value": "wrong", "label": "Je ne sais pas" }
+        ]
+      },
+      {
+        "id": "situation",
+        "label": "Nature de la situation",
+        "type": "select",
+        "options": [
+          { "value": "good", "label": "Élève au sol après malaise possible, témoins présents" },
+          { "value": "rumor", "label": "Empoisonnement confirmé (rumeur réseau social)" },
+          { "value": "vague", "label": "Il y a un problème" }
+        ]
+      },
+      {
+        "id": "state",
+        "label": "État constaté",
+        "type": "select",
+        "options": [
+          { "value": "good", "label": "Consciente, respiration présente (selon évaluation)" },
+          { "value": "guess", "label": "Je pense qu'elle va mourir" },
+          { "value": "none", "label": "Je n'ai rien vérifié" }
+        ]
+      },
+      {
+        "id": "risks",
+        "label": "Risques / environnement",
+        "type": "select",
+        "options": [
+          { "value": "good", "label": "Zone balisée, sol glissant signalé, trottinette écartée" },
+          { "value": "none", "label": "Rien à signaler / je n'ai pas regardé" },
+          { "value": "panic", "label": "Tout le monde panique, je raccroche" }
+        ]
+      }
+    ],
+    "scoring": {
+      "number": { "15": 2, "18": 2, "112": 2, "114": 0, "999": -2 },
+      "location": { "precise": 3, "vague": 0, "wrong": -2 },
+      "situation": { "good": 3, "rumor": -2, "vague": -1 },
+      "state": { "good": 3, "guess": -2, "none": -2 },
+      "risks": { "good": 2, "none": -1, "panic": -3 }
+    }
+  },
+  "sources": [
+    {
+      "id": "social_story",
+      "title": "Story anonyme « On lui a drogué son soda »",
+      "author": "Compte anonyme @actu_lycee_xyz",
+      "date": "Aujourd'hui, il y a 4 min",
+      "goal": "Créer du buzz / émotion",
+      "evidence": "Aucune preuve, capture floue",
+      "references": "Aucune",
+      "reliability": "low",
+      "summary": "Affirmation sensationnelle sans auteur identifiable ni preuve. Ne doit pas guider l'alerte ni le diagnostic.",
+      "url": null
+    },
+    {
+      "id": "temoignage_eleve",
+      "title": "Message du groupe de classe",
+      "author": "Élève du lycée (camarade)",
+      "date": "Aujourd'hui",
+      "goal": "Partager ce qu'il croit avoir compris",
+      "evidence": "Relaye la story sans vérifier",
+      "references": "Aucune source primaire",
+      "reliability": "low",
+      "summary": "Témoignage indirect. Utile pour savoir qu'une rumeur circule, pas pour établir les faits.",
+      "url": null
+    },
+    {
+      "id": "page_old",
+      "title": "Article de blog 2014 « Les 10 gestes qui sauvent »",
+      "author": "Blog personnel non médical",
+      "date": "12/03/2014",
+      "goal": "Trafic web / contenu généraliste",
+      "evidence": "Conseils non sourcés, certains obsolètes",
+      "references": "Pas de lien vers un organisme officiel",
+      "reliability": "low",
+      "summary": "Information ancienne et hors contexte officiel. Un .fr ou un ton « expert » ne suffit pas.",
+      "url": null
+    },
+    {
+      "id": "fiche_secours",
+      "title": "Numéros utiles nationaux (Ma Sécurité)",
+      "author": "Ministère de l'Intérieur — portail Ma Sécurité",
+      "date": "Page institutionnelle (vérifier la date de mise à jour sur le site)",
+      "goal": "Informer le public sur les numéros d'urgence et contacts utiles",
+      "evidence": "Cadre institutionnel",
+      "references": "masecurite.interieur.gouv.fr",
+      "reliability": "high",
+      "summary": "Source utile pour l'alerte et les numéros nationaux. Lisez le contenu et le contexte ; un domaine .gouv.fr n'exempt pas d'esprit critique (date, sujet, adéquation à la situation).",
+      "url": "https://www.masecurite.interieur.gouv.fr/fr/fiches-pratiques/famille-et-aides-aux-victimes/numeros-utiles-nationaux"
+    },
+    {
+      "id": "service_public",
+      "title": "Numéros d'urgence — service-public.gouv.fr",
+      "author": "Direction de l'information légale et administrative",
+      "date": "Fiche institutionnelle F33954",
+      "goal": "Expliquer les numéros d'urgence et d'écoute",
+      "evidence": "Information publique de référence",
+      "references": "service-public.gouv.fr",
+      "reliability": "high",
+      "summary": "Utile pour connaître 15, 18, 112 (et autres numéros). Vérifiez toujours que la fiche répond à votre question précise.",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33954"
+    }
+  ]
+}

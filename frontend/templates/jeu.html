@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulation secours — TIM / PSC1</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Jeu pédagogique TIM et premiers secours — scène interactive. Ne remplace pas une formation pratique.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,550;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/jeu/css/scene.css">
+</head>
+<body class="jeu-page">
+  <div class="jeu-banner" role="alert">
+    Simulation pédagogique TIM / PSC1 — ne remplace pas une formation pratique.
+    En situation réelle : protégez, constatez, puis alertez (15 / 18 / 112) sans passer par une consultation d'informations en ligne.
+    Les sources TIM du jeu sont un exercice d'esprit critique, pas une étape de l'appel des secours.
+  </div>
+
+  <header class="site-header jeu-header">
+    <a class="brand" href="/">
+      <div class="brand-mark" aria-hidden="true">TIM</div>
+      <div class="brand-text">
+        <strong>Simulation secours</strong>
+        <span>Cour de lycée — observation &amp; alerte</span>
+      </div>
+    </a>
+    <nav class="nav" aria-label="Navigation">
+      <a href="/">Site cybersécurité</a>
+      <a href="/securite">TLS / HTTPS</a>
+      <a href="/jeu" class="active">Simulation secours</a>
+      <button type="button" class="btn btn-secondary btn-small" id="btn-restart">Recommencer</button>
+    </nav>
+  </header>
+
+  <div class="jeu-app" id="jeu-app">
+    <aside class="jeu-progress" aria-label="Progression de la mission">
+      <h2 class="jeu-panel-title">Mission</h2>
+      <p class="jeu-step-label" id="step-label">Chargement…</p>
+      <ol class="jeu-steps" id="step-list"></ol>
+      <div class="jeu-objectives">
+        <h3>Objectifs</h3>
+        <ul id="objective-list"></ul>
+      </div>
+      <div class="jeu-clues">
+        <h3>Indices</h3>
+        <ul id="clue-list"><li class="muted">Aucun pour l’instant</li></ul>
+      </div>
+    </aside>
+
+    <section class="jeu-scene-wrap" aria-label="Scène interactive">
+      <div class="jeu-scene-toolbar">
+        <p id="scene-hint">Cliquez ou utilisez Tab puis Entrée pour explorer la cour.</p>
+      </div>
+      <div class="jeu-scene" id="scene-root" tabindex="-1"></div>
+      <div class="jeu-feedback" id="feedback" role="status" aria-live="polite"></div>
+    </section>
+
+    <aside class="jeu-side" aria-label="Détails et actions">
+      <h2 class="jeu-panel-title">Détails</h2>
+      <div id="selection-panel">
+        <p class="muted">Sélectionnez un personnage, un objet ou une zone de la cour.</p>
+      </div>
+      <div class="jeu-actions" id="actions-panel"></div>
+      <div class="jeu-sources" id="sources-panel" hidden>
+        <h3>Sources (exercice TIM)</h3>
+        <div id="sources-list"></div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="jeu-bilan" id="bilan-panel" hidden>
+    <div class="jeu-bilan-card">
+      <h2>Bilan de la mission</h2>
+      <div id="bilan-content"></div>
+      <button type="button" class="btn btn-primary" id="btn-restart-bilan">Recommencer la mission</button>
+      <a class="btn btn-secondary" href="/">Retour à l’accueil</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>
+      Support pédagogique complémentaire. En situation réelle : protéger, constater, alerter (15, 18, 112)
+      — sans consulter Internet avant l’appel. Les sources TIM du jeu entraînent l’esprit critique face aux rumeurs.
+      Ceci ne remplace pas une formation PSC1 / SST.
+    </p>
+  </footer>
+
+  <script type="module" src="/static/jeu/js/app.js"></script>
+</body>
+</html>

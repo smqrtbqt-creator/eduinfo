@@ -30,6 +30,7 @@
       <a href="/a-propos" class="{% if request.url.path == '/a-propos' %}active{% endif %}">À propos</a>
       <a href="/contact" class="{% if request.url.path == '/contact' %}active{% endif %}">Contact</a>
       <a href="/securite" class="{% if request.url.path == '/securite' %}active{% endif %}">Sécurité</a>
+      <a href="/jeu" class="{% if request.url.path == '/jeu' %}active{% endif %}">Simulation secours</a>
       {% if logged_in %}
         <a href="/connecte">Mon espace</a>
         <form class="inline-form" method="post" action="/logout">

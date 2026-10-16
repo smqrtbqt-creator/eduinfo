@@ -16,10 +16,11 @@ Organisme fictif : **Aide & Services**. Aucun lien avec une entreprise réelle.
 tp-Info/
 ├── docker-compose.yml
 ├── README.md
+├── pytest.ini
 ├── backend/
 │   ├── Dockerfile
 │   ├── requirements.txt
-│   ├── main.py              # Application FastAPI
+│   ├── main.py              # Application FastAPI (+ route /jeu)
 │   ├── database.py          # SQLite
 │   ├── models.py            # Utilisateurs (sans mot de passe)
 │   ├── schemas.py
@@ -27,10 +28,40 @@ tp-Info/
 │   ├── run.py               # Démarrage HTTPS
 │   └── entrypoint.sh
 ├── frontend/
-│   ├── templates/           # Pages HTML (Jinja2)
-│   └── static/              # CSS / JS
+│   ├── templates/           # Pages HTML (Jinja2) + jeu.html
+│   └── static/
+│       ├── css/ js/         # Site cybersécurité
+│       └── jeu/             # Module TIM / PSC1 (SVG + moteur + JSON)
+├── tests/                   # pytest (smoke + schéma scénario)
 ├── database/                # Fichier SQLite (créé au démarrage)
 └── certs/                   # Certificat auto-signé local
+```
+
+---
+
+## Simulation secours TIM / PSC1
+
+Module **additif** (ne remplace pas le site cybersécurité) :
+
+**URL :** https://localhost:8443/jeu
+
+- Scène SVG interactive (cour de lycée)
+- Moteur de scénario JS + fichier JSON
+- Étapes : protéger → informations / TIM → évaluer → alerter → bilan
+- Numéros d'urgence : 15, 18, 112
+
+### Ajouter un nouveau scénario
+
+1. Copier `frontend/static/jeu/scenarios/cour-effondrement.json`
+2. Adapter `id`, `entities`, `actions`, `steps`, `sources`
+3. Charger le nouveau fichier dans `frontend/static/jeu/js/app.js` (`SCENARIO_URL`)
+
+### Tests
+
+```bash
+.\.venv\Scripts\Activate.ps1
+pip install -r backend\requirements.txt
+pytest -q
 ```
 
 ---
@@ -98,6 +129,7 @@ Ces identifiants sont modifiables via les variables d'environnement
 | Créer un compte              | https://localhost:8443/register          |
 | Se connecter                 | https://localhost:8443/login             |
 | Page pédagogique TLS         | https://localhost:8443/securite          |
+| Simulation secours TIM/PSC1  | https://localhost:8443/jeu               |
 | Admin enseignant             | https://localhost:8443/admin             |
 
 ---
