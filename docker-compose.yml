@@ -5,7 +5,8 @@ services:
       dockerfile: backend/Dockerfile
     container_name: aide-services-demo
     ports:
-      - "8443:8443"
+      # Port hôte 8444 : laisse 443/8443 libres pour l'autre projet sur le serveur
+      - "8444:8443"
     environment:
       ADMIN_USERNAME: enseignant
       ADMIN_PASSWORD: PedagoDemo2026!

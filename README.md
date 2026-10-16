@@ -43,7 +43,8 @@ tp-Info/
 
 Module **additif** (ne remplace pas le site cybersécurité) :
 
-**URL :** https://localhost:8443/jeu
+**URL (Docker / serveur) :** https://localhost:8444/jeu  
+**URL (python local) :** https://localhost:8443/jeu
 
 - Scène SVG interactive (cour de lycée)
 - Moteur de scénario JS + fichier JSON
@@ -76,7 +77,8 @@ docker compose up --build
 
 Puis ouvrir Firefox :
 
-**https://localhost:8443**
+**https://localhost:8444**  
+(Port hôte **8444** pour ne pas entrer en conflit avec un autre projet sur 443/8443.)
 
 ---
 
