@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,550;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <!-- Uniquement /static/jeu/ pour passer derrière Nginx sur le 443 sans conflit -->
   <link rel="stylesheet" href="/static/jeu/css/scene.css">
 </head>
 <body class="jeu-page">
@@ -20,7 +20,7 @@
   </div>
 
   <header class="site-header jeu-header">
-    <a class="brand" href="/">
+    <a class="brand" href="/jeu">
       <div class="brand-mark" aria-hidden="true">TIM</div>
       <div class="brand-text">
         <strong>Simulation secours</strong>
@@ -28,8 +28,6 @@
       </div>
     </a>
     <nav class="nav" aria-label="Navigation">
-      <a href="/">Site cybersécurité</a>
-      <a href="/securite">TLS / HTTPS</a>
       <a href="/jeu" class="active">Simulation secours</a>
       <button type="button" class="btn btn-secondary btn-small" id="btn-restart">Recommencer</button>
     </nav>
@@ -76,7 +74,7 @@
       <h2>Bilan de la mission</h2>
       <div id="bilan-content"></div>
       <button type="button" class="btn btn-primary" id="btn-restart-bilan">Recommencer la mission</button>
-      <a class="btn btn-secondary" href="/">Retour à l’accueil</a>
+      <a class="btn btn-secondary" href="/jeu">Retour au jeu</a>
     </div>
   </div>
 
