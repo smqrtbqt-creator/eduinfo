@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogue des projets — 164.132.108.166</title>
+  <meta name="description" content="Page d'accueil : accès à tous les projets hébergés sur ce serveur.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/hub/styles.css">
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true"></div>
+
+  <header class="top">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">VPS</div>
+      <div>
+        <strong>Catalogue des projets</strong>
+        <span>164.132.108.166</span>
+      </div>
+    </div>
+    <p class="tagline">Choisissez un projet pour y accéder.</p>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Tous les projets</h1>
+      <p>Arborescence des applications déployées sur ce serveur. Filtrez par catégorie ou ouvrez directement un lien.</p>
+      <div class="filters" id="filters" role="group" aria-label="Filtrer par catégorie"></div>
+    </section>
+
+    <section aria-label="Liste des projets">
+      <div class="tree" id="tree"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Mise à jour via <code>deploy/hub/projets.json</code> — dépôt eduinfo.</p>
+  </footer>
+
+  <script src="/hub/app.js"></script>
+</body>
+</html>

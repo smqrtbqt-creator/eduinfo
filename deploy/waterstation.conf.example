@@ -1,0 +1,29 @@
+# Remplacer /etc/nginx/sites-enabled/waterstation par ce contenu
+# (après git pull), puis : sudo nginx -t && sudo systemctl reload nginx
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name 164.132.108.166;
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
+    http2 on;
+    server_name 164.132.108.166;
+
+    ssl_certificate /etc/letsencrypt/live/164.132.108.166/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/164.132.108.166/privkey.pem;
+
+    # Catalogue + /hub + /waterstation + /jeu
+    include /var/www/tp-info/eduinfo/eduinfo/deploy/nginx-hub.conf;
+}

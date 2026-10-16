@@ -1,0 +1,88 @@
+{
+  "title": "Catalogue des projets",
+  "subtitle": "Accès centralisé aux applications hébergées sur ce serveur",
+  "host": "164.132.108.166",
+  "categories": [
+    {
+      "id": "pedagogie",
+      "label": "Pédagogie / TP"
+    },
+    {
+      "id": "web",
+      "label": "Sites web"
+    },
+    {
+      "id": "saas",
+      "label": "Applications"
+    },
+    {
+      "id": "api",
+      "label": "API"
+    }
+  ],
+  "projects": [
+    {
+      "id": "jeu-tim-psc1",
+      "name": "Simulation secours TIM / PSC1",
+      "description": "Scène interactive : premiers secours, esprit critique et alerte aux secours (exercice pédagogique).",
+      "category": "pedagogie",
+      "url": "/jeu",
+      "status": "online",
+      "tech": ["FastAPI", "SVG", "Nginx"]
+    },
+    {
+      "id": "aide-services",
+      "name": "Aide & Services — démo cybersécurité",
+      "description": "Site pédagogique TLS / formulaires / données personnelles fictives (port 8444).",
+      "category": "pedagogie",
+      "url": "https://164.132.108.166:8444/",
+      "status": "online",
+      "tech": ["FastAPI", "HTTPS auto-signé", "Docker"]
+    },
+    {
+      "id": "waterstation",
+      "name": "Waterstation",
+      "description": "Application Waterstation (SvelteKit) — anciennement page d'accueil de l'IP.",
+      "category": "web",
+      "url": "/waterstation/",
+      "status": "online",
+      "tech": ["SvelteKit", "Nginx"]
+    },
+    {
+      "id": "agence-ia-web",
+      "name": "Agence IA Web",
+      "description": "Site vitrine agence-ia-web.com",
+      "category": "web",
+      "url": "https://agence-ia-web.com",
+      "status": "online",
+      "tech": ["Nginx", "SSL"]
+    },
+    {
+      "id": "leroy-debarras",
+      "name": "Leroy du débarras",
+      "description": "Site leroydudebarras.fr",
+      "category": "web",
+      "url": "https://leroydudebarras.fr",
+      "status": "online",
+      "tech": ["Nginx", "SSL"]
+    },
+    {
+      "id": "saas-app",
+      "name": "SaaS App — Agence IA",
+      "description": "Application SaaS (app.agence-ia-web.com)",
+      "category": "saas",
+      "url": "https://app.agence-ia-web.com",
+      "status": "online",
+      "tech": ["Nginx", "Certbot"]
+    },
+    {
+      "id": "api-agence",
+      "name": "API Agence IA Web",
+      "description": "API (api.agence-ia-web.com)",
+      "category": "api",
+      "url": "https://api.agence-ia-web.com",
+      "status": "online",
+      "tech": ["Nginx", "API"]
+    }
+  ]
+}

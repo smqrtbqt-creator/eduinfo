@@ -39,12 +39,28 @@ tp-Info/
 
 ---
 
+## Catalogue des projets (VPS)
+
+Page d'accueil listant tous les projets du serveur :
+
+- Fichiers : `deploy/hub/` (`index.html`, `projets.json`, …)
+- Nginx : `deploy/nginx-hub.conf` + exemple `deploy/waterstation.conf.example`
+
+**URL serveur :** https://164.132.108.166/  
+**Jeu :** https://164.132.108.166/jeu  
+**Waterstation :** https://164.132.108.166/waterstation/
+
+Pour ajouter un projet : éditer `deploy/hub/projets.json`, puis `git pull` sur le VPS (pas besoin de rebuild Docker pour le hub).
+
+---
+
 ## Simulation secours TIM / PSC1
 
 Module **additif** (ne remplace pas le site cybersécurité) :
 
 **URL (Docker / serveur) :** https://localhost:8444/jeu  
-**URL (python local) :** https://localhost:8443/jeu
+**URL (python local) :** https://localhost:8443/jeu  
+**URL (via Nginx 443) :** https://164.132.108.166/jeu
 
 - Scène SVG interactive (cour de lycée)
 - Moteur de scénario JS + fichier JSON
