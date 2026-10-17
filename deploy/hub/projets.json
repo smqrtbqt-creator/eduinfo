@@ -31,9 +31,9 @@
       "name": "Aide & Services — démo cybersécurité",
       "description": "Site pédagogique TLS / formulaires / données personnelles fictives.",
       "category": "pedagogie",
-      "url": "https://164.132.108.166:8444/",
+      "url": "/cyber/",
       "status": "online",
-      "tech": ["FastAPI", "HTTPS auto-signé", "Docker"]
+      "tech": ["FastAPI", "HTTPS", "Nginx /cyber/"]
     },
     {
       "id": "riviere-blanche",
