@@ -88,6 +88,15 @@
       "url": "/redox/quiz",
       "status": "online",
       "tech": ["Vite", "Quiz"]
+    },
+    {
+      "id": "alcalinite-ta-tac",
+      "name": "Alcalinité · TA / TAC",
+      "description": "Laboratoire interactif : pH, alcalinité, dosages TA/TAC et conversion en °f (sans quiz).",
+      "category": "chimie",
+      "url": "/alcalinite/",
+      "status": "online",
+      "tech": ["React", "Vite", "XState", "deploy/alcalinite"]
     }
   ]
 }
