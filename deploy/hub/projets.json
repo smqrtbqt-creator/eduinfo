@@ -6,6 +6,10 @@
     {
       "id": "pedagogie",
       "label": "Pédagogie / TP"
+    },
+    {
+      "id": "waterstation",
+      "label": "Waterstation"
     }
   ],
   "projects": [
@@ -28,13 +32,40 @@
       "tech": ["FastAPI", "HTTPS auto-signé", "Docker"]
     },
     {
-      "id": "waterstation",
-      "name": "Waterstation",
-      "description": "Application pédagogique Waterstation.",
-      "category": "pedagogie",
+      "id": "riviere-blanche",
+      "name": "Rivière Blanche",
+      "description": "Module Waterstation — station Rivière Blanche.",
+      "category": "waterstation",
       "url": "/waterstation/",
       "status": "online",
-      "tech": ["SvelteKit", "Nginx"]
+      "tech": ["SvelteKit", "Waterstation"]
+    },
+    {
+      "id": "la-bastide",
+      "name": "La Bastide",
+      "description": "Module Waterstation — station La Bastide.",
+      "category": "waterstation",
+      "url": "/waterstation/bastide",
+      "status": "online",
+      "tech": ["SvelteKit", "Waterstation"]
+    },
+    {
+      "id": "desinfection",
+      "name": "Désinfection",
+      "description": "Module Waterstation — station Désinfection.",
+      "category": "waterstation",
+      "url": "/waterstation/desinfection",
+      "status": "online",
+      "tech": ["SvelteKit", "Waterstation"]
+    },
+    {
+      "id": "laboratoire",
+      "name": "Laboratoire",
+      "description": "Module Waterstation — station Laboratoire.",
+      "category": "waterstation",
+      "url": "/waterstation/laboratoire",
+      "status": "online",
+      "tech": ["SvelteKit", "Waterstation"]
     }
   ]
 }
