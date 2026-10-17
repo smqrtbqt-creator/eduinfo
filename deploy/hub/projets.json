@@ -10,6 +10,10 @@
     {
       "id": "waterstation",
       "label": "Waterstation"
+    },
+    {
+      "id": "chimie",
+      "label": "Chimie"
     }
   ],
   "projects": [
@@ -66,6 +70,24 @@
       "url": "/waterstation/laboratoire",
       "status": "online",
       "tech": ["SvelteKit", "Waterstation"]
+    },
+    {
+      "id": "oxydoreduction",
+      "name": "Oxydo-réduction (Redox)",
+      "description": "Poste de conduite pédagogique : circulation des électrons et quiz (dossier waterstation/redox).",
+      "category": "chimie",
+      "url": "/redox/",
+      "status": "online",
+      "tech": ["Vite", "Waterstation", "static/redox"]
+    },
+    {
+      "id": "oxydoreduction-quiz",
+      "name": "Oxydo-réduction — Quiz",
+      "description": "Quiz associé à la station redox.",
+      "category": "chimie",
+      "url": "/redox/quiz",
+      "status": "online",
+      "tech": ["Vite", "Quiz"]
     }
   ]
 }
